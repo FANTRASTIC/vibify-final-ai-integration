@@ -1,0 +1,74 @@
+flowchart TD
+    %% ---------- inputs ----------
+    UI_S["User input: structured profile<br/>(CLI / Streamlit sliders)"]
+    UI_T["User input: free text<br/>(CLI --text / Streamlit box)"]
+
+    %% ---------- data stores ----------
+    CAT[("Catalog<br/>data/songs.csv<br/>(validated by catalog.py)")]
+    KB[("Knowledge base<br/>knowledge/*.md<br/>aliases, related-genre weights, guides")]
+    LOG[("Structured log<br/>logs/vibify.log<br/>agent_traces.jsonl")]
+    FB[("data/feedback.jsonl")]
+
+    %% ---------- pipeline ----------
+    PARSER["Intent parser<br/>LLM or MockLLM, schema-validated<br/>(src/parser.py)"]
+    GUARD["Guardrails<br/>validate + normalize<br/>(src/guardrails.py)"]
+    RETR["Retriever (RAG)<br/>TF-IDF: resolve genre, neighbors, snippets<br/>(src/retriever.py)"]
+    SCORE["Scorer v2<br/>deterministic, 7 features<br/>(src/scoring.py)"]
+    RERANK["Diversity + discovery re-rank<br/>(src/rerank.py)"]
+    EVAL{"Reliability evaluator (gate)<br/>flags, confidence<br/>(src/evaluator.py)"}
+    REVISE["Revise loop, max 2 steps<br/>fixed action menu, no LLM<br/>(src/agent.py)"]
+    FALLBACK["Fallback: best attempt<br/>degraded = true + plain-language notes"]
+    EXPL["Explainer<br/>LLM or MockLLM<br/>(src/explainer.py)"]
+    VERIF{"Verifier<br/>numbers, names, claims, URLs"}
+    TEMPLATE["Deterministic template<br/>(v1-style reasons)"]
+    OUT["Result: songs, scores, confidence,<br/>flags, explanations, sources"]
+    ERR["Error Result<br/>ok = false, error_code"]
+
+    %% ---------- human in the loop ----------
+    USER(["User sees result"])
+    THUMBS["Thumbs up / down<br/>(Streamlit)"]
+    LABELS["Author review of<br/>relevance_labels.json<br/>(DRAFT until reviewed)"]
+
+    %% ---------- tests ----------
+    PYTEST["pytest suite<br/>unit + integration + regression"]
+    HARNESS["Evaluation harness<br/>scripts/evaluate.py<br/>v1 vs v2 metrics"]
+
+    %% flow
+    UI_T --> PARSER --> GUARD
+    UI_S --> GUARD
+    GUARD -- "invalid" --> ERR
+    GUARD --> RETR
+    KB --> RETR
+    RETR -- "canonical genres + neighbor weights" --> SCORE
+    CAT --> SCORE
+    SCORE --> RERANK --> EVAL
+    EVAL -- "flags raised" --> REVISE
+    REVISE -- "re-score (bounded)" --> SCORE
+    EVAL -- "pass" --> EXPL
+    REVISE -- "budget exhausted" --> FALLBACK --> EXPL
+    RETR -- "snippets" --> EXPL
+    EXPL --> VERIF
+    VERIF -- "ok" --> OUT
+    VERIF -- "problems: retry once, then" --> TEMPLATE --> OUT
+    OUT --> USER
+    ERR --> USER
+    USER --> THUMBS --> FB
+
+    %% logging
+    GUARD -.-> LOG
+    REVISE -.-> LOG
+    OUT -.-> LOG
+
+    %% human review of labels feeds the harness
+    LABELS --> HARNESS
+
+    %% testing arrows
+    PYTEST -. "checks" .-> GUARD
+    PYTEST -. "checks" .-> RETR
+    PYTEST -. "checks" .-> SCORE
+    PYTEST -. "checks" .-> EVAL
+    PYTEST -. "checks" .-> REVISE
+    PYTEST -. "checks" .-> VERIF
+    PYTEST -. "checks (no raw text)" .-> LOG
+    HARNESS -. "runs 33 scenarios end to end" .-> OUT
+    HARNESS -. "compares with Vibify 1.0" .-> SCORE
