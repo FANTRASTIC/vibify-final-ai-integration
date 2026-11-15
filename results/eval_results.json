@@ -1,0 +1,1011 @@
+{
+ "all_passed": true,
+ "consistency": {
+  "identical_across_runs": 33,
+  "note": "In mock mode this is deterministic by construction; it only becomes informative with a real LLM backend.",
+  "of": 33,
+  "runs": 3
+ },
+ "evaluator_stats": {
+  "avg_catalog_support": 0.8281,
+  "degraded": 1,
+  "explanation_sources": {
+   "llm": 123
+  },
+  "flag_counts_by_code": {
+   "CONFLICTING_PREFERENCES": 2,
+   "FEATURE_MISMATCH": 1,
+   "LOW_MARGIN": 2,
+   "TOO_FEW_RESULTS": 1,
+   "UNRESOLVED_GENRE": 1
+  }
+ },
+ "failure_rate": {
+  "v1": {
+   "eligible": 19,
+   "note": "v1 is run only on structured scenarios whose fields it supports",
+   "unexpected_failures": 0,
+   "unexpected_successes": 2
+  },
+  "v2": {
+   "unexpected_failures": 0,
+   "unexpected_successes": 0
+  }
+ },
+ "guardrails": {
+  "of": 9,
+  "passed": 9,
+  "scenarios": [
+   {
+    "id": "I01",
+    "passed": true
+   },
+   {
+    "id": "I02",
+    "passed": true
+   },
+   {
+    "id": "I03",
+    "passed": true
+   },
+   {
+    "id": "I04",
+    "passed": true
+   },
+   {
+    "id": "I05",
+    "passed": true
+   },
+   {
+    "id": "I06",
+    "passed": true
+   },
+   {
+    "id": "J01",
+    "passed": true
+   },
+   {
+    "id": "J02",
+    "passed": true
+   },
+   {
+    "id": "J03",
+    "passed": true
+   }
+  ]
+ },
+ "meta": {
+  "catalog_size": 49,
+  "label_status": "DRAFT - labeled by the AI assistant from scenario descriptions; the author must review and edit before these numbers are cited as final",
+  "llm_backend": "mock",
+  "n_scenarios": 33,
+  "runs_per_scenario": 3
+ },
+ "metrics": {
+  "v1_baseline": {
+   "diversity_at_5": 0.7941,
+   "dominance_top3": [
+    {
+     "scenarios": 4,
+     "share": 0.2353,
+     "title": "Glass Confetti"
+    },
+    {
+     "scenarios": 3,
+     "share": 0.1765,
+     "title": "Sunrise City"
+    },
+    {
+     "scenarios": 3,
+     "share": 0.1765,
+     "title": "Gym Hero"
+    }
+   ],
+   "genre_coverage": 1.0,
+   "genres_covered": 16,
+   "genres_in_catalog": 16,
+   "max_share": 0.2353,
+   "n_labeled": 17,
+   "n_scenarios": 17,
+   "precision_at_5": 0.7529
+  },
+  "v2_all_ok_scenarios": {
+   "diversity_at_5": 0.832,
+   "dominance_top3": [
+    {
+     "scenarios": 7,
+     "share": 0.28,
+     "title": "Storm Runner"
+    },
+    {
+     "scenarios": 6,
+     "share": 0.24,
+     "title": "Gravel Highway"
+    },
+    {
+     "scenarios": 6,
+     "share": 0.24,
+     "title": "Last Train Blues"
+    }
+   ],
+   "genre_coverage": 1.0,
+   "genres_covered": 16,
+   "genres_in_catalog": 16,
+   "max_share": 0.28,
+   "n_labeled": 25,
+   "n_scenarios": 25,
+   "precision_at_5": 0.768
+  },
+  "v2_evaluator_disabled_all_ok_scenarios": {
+   "diversity_at_5": 0.86,
+   "dominance_top3": [
+    {
+     "scenarios": 7,
+     "share": 0.28,
+     "title": "Last Train Blues"
+    },
+    {
+     "scenarios": 6,
+     "share": 0.24,
+     "title": "Storm Runner"
+    },
+    {
+     "scenarios": 6,
+     "share": 0.24,
+     "title": "Gravel Highway"
+    }
+   ],
+   "genre_coverage": 1.0,
+   "genres_covered": 16,
+   "genres_in_catalog": 16,
+   "max_share": 0.28,
+   "n_labeled": 25,
+   "n_scenarios": 25,
+   "precision_at_5": 0.768
+  },
+  "v2_on_v1_eligible_subset": {
+   "diversity_at_5": 0.8118,
+   "dominance_top3": [
+    {
+     "scenarios": 4,
+     "share": 0.2353,
+     "title": "Storm Runner"
+    },
+    {
+     "scenarios": 4,
+     "share": 0.2353,
+     "title": "Gravel Highway"
+    },
+    {
+     "scenarios": 4,
+     "share": 0.2353,
+     "title": "Empty Pew Road"
+    }
+   ],
+   "genre_coverage": 1.0,
+   "genres_covered": 16,
+   "genres_in_catalog": 16,
+   "max_share": 0.2353,
+   "n_labeled": 17,
+   "n_scenarios": 17,
+   "precision_at_5": 0.7412
+  }
+ },
+ "scenarios": [
+  {
+   "category": "normal",
+   "consistent": true,
+   "degraded": false,
+   "description": "High-energy pop for the gym: happy, loud, not acoustic",
+   "error_code": null,
+   "flags": [],
+   "id": "S01",
+   "input_type": "structured",
+   "ok": true,
+   "passed": true,
+   "precision_at_5": 1.0,
+   "problems": [],
+   "top1": "Sunrise City",
+   "top5_ids": [
+    1,
+    20,
+    10,
+    30,
+    32
+   ],
+   "v1_precision_at_5": 0.8,
+   "v1_top5_ids": [
+    1,
+    20,
+    5,
+    32,
+    21
+   ]
+  },
+  {
+   "category": "normal",
+   "consistent": true,
+   "degraded": false,
+   "description": "Chill, quiet, acoustic lofi for studying",
+   "error_code": null,
+   "flags": [],
+   "id": "S02",
+   "input_type": "structured",
+   "ok": true,
+   "passed": true,
+   "precision_at_5": 0.6,
+   "problems": [],
+   "top1": "Midnight Coding",
+   "top5_ids": [
+    2,
+    4,
+    6,
+    25,
+    26
+   ],
+   "v1_precision_at_5": 0.8,
+   "v1_top5_ids": [
+    2,
+    4,
+    9,
+    6,
+    29
+   ]
+  },
+  {
+   "category": "normal",
+   "consistent": true,
+   "degraded": false,
+   "description": "Deep, intense, heavy rock",
+   "error_code": null,
+   "flags": [],
+   "id": "S03",
+   "input_type": "structured",
+   "ok": true,
+   "passed": true,
+   "precision_at_5": 0.8,
+   "problems": [],
+   "top1": "Storm Runner",
+   "top5_ids": [
+    3,
+    37,
+    22,
+    48,
+    5
+   ],
+   "v1_precision_at_5": 0.6,
+   "v1_top5_ids": [
+    3,
+    22,
+    23,
+    37,
+    5
+   ]
+  },
+  {
+   "category": "adversarial",
+   "consistent": true,
+   "degraded": true,
+   "description": "Conflicting: wants blues that is sad but also very high energy",
+   "error_code": null,
+   "flags": [
+    "CONFLICTING_PREFERENCES",
+    "FEATURE_MISMATCH"
+   ],
+   "id": "S04",
+   "input_type": "structured",
+   "ok": true,
+   "passed": true,
+   "precision_at_5": 0.8,
+   "problems": [],
+   "top1": "Last Train Blues",
+   "top5_ids": [
+    19,
+    48,
+    3,
+    39,
+    22
+   ],
+   "v1_precision_at_5": 0.8,
+   "v1_top5_ids": [
+    48,
+    19,
+    49,
+    3,
+    37
+   ]
+  },
+  {
+   "category": "adversarial",
+   "consistent": true,
+   "degraded": false,
+   "description": "Unknown genre k-pop, happy and upbeat",
+   "error_code": null,
+   "flags": [],
+   "id": "S05",
+   "input_type": "structured",
+   "ok": true,
+   "passed": true,
+   "precision_at_5": 1.0,
+   "problems": [],
+   "top1": "Sunrise City",
+   "top5_ids": [
+    1,
+    20,
+    10,
+    30,
+    32
+   ],
+   "v1_precision_at_5": 1.0,
+   "v1_top5_ids": [
+    1,
+    20,
+    32,
+    10,
+    30
+   ]
+  },
+  {
+   "category": "adversarial",
+   "consistent": true,
+   "degraded": false,
+   "description": "Mixed signals: pop and chill at the same time, mid energy, acoustic",
+   "error_code": null,
+   "flags": [],
+   "id": "S06",
+   "input_type": "structured",
+   "ok": true,
+   "passed": true,
+   "precision_at_5": 0.6,
+   "problems": [],
+   "top1": "Quiet Neon Hours",
+   "top5_ids": [
+    21,
+    31,
+    20,
+    2,
+    6
+   ],
+   "v1_precision_at_5": 0.4,
+   "v1_top5_ids": [
+    21,
+    20,
+    2,
+    1,
+    4
+   ]
+  },
+  {
+   "category": "normal",
+   "consistent": true,
+   "degraded": false,
+   "description": "Relaxed acoustic jazz for a quiet evening",
+   "error_code": null,
+   "flags": [],
+   "id": "S07",
+   "input_type": "structured",
+   "ok": true,
+   "passed": true,
+   "precision_at_5": 0.6,
+   "problems": [],
+   "top1": "Coffee Shop Stories",
+   "top5_ids": [
+    7,
+    26,
+    19,
+    49,
+    44
+   ],
+   "v1_precision_at_5": 0.8,
+   "v1_top5_ids": [
+    7,
+    26,
+    27,
+    44,
+    9
+   ]
+  },
+  {
+   "category": "normal",
+   "consistent": true,
+   "degraded": false,
+   "description": "EDM for a workout: euphoric, very high energy, danceable",
+   "error_code": null,
+   "flags": [],
+   "id": "S08",
+   "input_type": "structured",
+   "ok": true,
+   "passed": true,
+   "precision_at_5": 0.8,
+   "problems": [],
+   "top1": "Pulse Cathedral",
+   "top5_ids": [
+    16,
+    42,
+    28,
+    5,
+    8
+   ]
+  },
+  {
+   "category": "normal",
+   "consistent": true,
+   "degraded": false,
+   "description": "Peaceful classical music, very quiet and acoustic",
+   "error_code": null,
+   "flags": [],
+   "id": "S09",
+   "input_type": "structured",
+   "ok": true,
+   "passed": true,
+   "precision_at_5": 0.8,
+   "problems": [],
+   "top1": "Moonlit Sonata Revisited",
+   "top5_ids": [
+    12,
+    24,
+    34,
+    46,
+    25
+   ],
+   "v1_precision_at_5": 1.0,
+   "v1_top5_ids": [
+    12,
+    34,
+    35,
+    24,
+    46
+   ]
+  },
+  {
+   "category": "normal",
+   "consistent": true,
+   "degraded": false,
+   "description": "Nostalgic country, gentle and acoustic",
+   "error_code": null,
+   "flags": [],
+   "id": "S10",
+   "input_type": "structured",
+   "ok": true,
+   "passed": true,
+   "precision_at_5": 0.8,
+   "problems": [],
+   "top1": "Dusty Porch Light",
+   "top5_ids": [
+    14,
+    39,
+    49,
+    18,
+    46
+   ],
+   "v1_precision_at_5": 1.0,
+   "v1_top5_ids": [
+    14,
+    39,
+    38,
+    49,
+    23
+   ]
+  },
+  {
+   "category": "normal",
+   "consistent": true,
+   "degraded": false,
+   "description": "Confident hip hop with swagger",
+   "error_code": null,
+   "flags": [],
+   "id": "S11",
+   "input_type": "structured",
+   "ok": true,
+   "passed": true,
+   "precision_at_5": 1.0,
+   "problems": [],
+   "top1": "Concrete Crown",
+   "top5_ids": [
+    11,
+    32,
+    22,
+    41,
+    27
+   ],
+   "v1_precision_at_5": 1.0,
+   "v1_top5_ids": [
+    11,
+    32,
+    33,
+    22,
+    27
+   ]
+  },
+  {
+   "category": "normal",
+   "consistent": true,
+   "degraded": false,
+   "description": "Melancholic folk, low energy, acoustic",
+   "error_code": null,
+   "flags": [],
+   "id": "S12",
+   "input_type": "structured",
+   "ok": true,
+   "passed": true,
+   "precision_at_5": 0.8,
+   "problems": [],
+   "top1": "Autumn Letters",
+   "top5_ids": [
+    18,
+    46,
+    39,
+    34,
+    14
+   ],
+   "v1_precision_at_5": 0.6,
+   "v1_top5_ids": [
+    18,
+    46,
+    47,
+    34,
+    21
+   ]
+  },
+  {
+   "category": "normal",
+   "consistent": true,
+   "degraded": false,
+   "description": "Laid-back sunny reggae",
+   "error_code": null,
+   "flags": [
+    "TOO_FEW_RESULTS"
+   ],
+   "id": "S13",
+   "input_type": "structured",
+   "ok": true,
+   "passed": true,
+   "precision_at_5": 0.4,
+   "problems": [],
+   "top1": "Island Hammock",
+   "top5_ids": [
+    17,
+    44
+   ],
+   "v1_precision_at_5": 0.6,
+   "v1_top5_ids": [
+    17,
+    44,
+    45,
+    2,
+    14
+   ]
+  },
+  {
+   "category": "normal",
+   "consistent": true,
+   "degraded": false,
+   "description": "Angry, extremely loud metal",
+   "error_code": null,
+   "flags": [],
+   "id": "S14",
+   "input_type": "structured",
+   "ok": true,
+   "passed": true,
+   "precision_at_5": 0.6,
+   "problems": [],
+   "top1": "Iron Verdict",
+   "top5_ids": [
+    13,
+    36,
+    3,
+    22,
+    16
+   ],
+   "v1_precision_at_5": 0.8,
+   "v1_top5_ids": [
+    13,
+    36,
+    37,
+    16,
+    3
+   ]
+  },
+  {
+   "category": "normal",
+   "consistent": true,
+   "degraded": false,
+   "description": "Romantic r&b for a date night",
+   "error_code": null,
+   "flags": [],
+   "id": "S15",
+   "input_type": "structured",
+   "ok": true,
+   "passed": true,
+   "precision_at_5": 1.0,
+   "problems": [],
+   "top1": "Silk Telephone",
+   "top5_ids": [
+    40,
+    15,
+    26,
+    31,
+    33
+   ],
+   "v1_precision_at_5": 1.0,
+   "v1_top5_ids": [
+    40,
+    15,
+    41,
+    31,
+    26
+   ]
+  },
+  {
+   "category": "normal",
+   "consistent": true,
+   "degraded": false,
+   "description": "Moody synthwave for a night drive",
+   "error_code": null,
+   "flags": [],
+   "id": "S16",
+   "input_type": "structured",
+   "ok": true,
+   "passed": true,
+   "precision_at_5": 0.8,
+   "problems": [],
+   "top1": "Night Drive Loop",
+   "top5_ids": [
+    8,
+    28,
+    41,
+    43,
+    42
+   ],
+   "v1_precision_at_5": 0.8,
+   "v1_top5_ids": [
+    8,
+    28,
+    29,
+    41,
+    20
+   ]
+  },
+  {
+   "category": "adversarial",
+   "consistent": true,
+   "degraded": false,
+   "description": "Unsupported genre (bossa nova) with a relaxed acoustic mood",
+   "error_code": null,
+   "flags": [
+    "UNRESOLVED_GENRE"
+   ],
+   "id": "S17",
+   "input_type": "structured",
+   "ok": true,
+   "passed": true,
+   "precision_at_5": 0.4,
+   "problems": [],
+   "top1": "Coffee Shop Stories",
+   "top5_ids": [
+    7,
+    44,
+    9,
+    19,
+    39
+   ],
+   "v1_precision_at_5": 0.4,
+   "v1_top5_ids": [
+    7,
+    44,
+    9,
+    19,
+    39
+   ]
+  },
+  {
+   "category": "adversarial",
+   "consistent": true,
+   "degraded": false,
+   "description": "Conflicting mood and energy: sad but extremely energetic, no genre",
+   "error_code": null,
+   "flags": [
+    "LOW_MARGIN",
+    "CONFLICTING_PREFERENCES"
+   ],
+   "id": "S18",
+   "input_type": "structured",
+   "ok": true,
+   "passed": true,
+   "precision_at_5": 0.6,
+   "problems": [],
+   "top1": "Pulse Cathedral",
+   "top5_ids": [
+    16,
+    36,
+    5,
+    13,
+    3
+   ],
+   "v1_precision_at_5": 0.4,
+   "v1_top5_ids": [
+    16,
+    36,
+    5,
+    13,
+    42
+   ]
+  },
+  {
+   "category": "normal",
+   "consistent": true,
+   "degraded": false,
+   "description": "Multi-genre request: rock and blues, intense and driving",
+   "error_code": null,
+   "flags": [],
+   "id": "S19",
+   "input_type": "structured",
+   "ok": true,
+   "passed": true,
+   "precision_at_5": 0.8,
+   "problems": [],
+   "top1": "Crossroads Static",
+   "top5_ids": [
+    48,
+    3,
+    37,
+    22,
+    19
+   ]
+  },
+  {
+   "category": "normal",
+   "consistent": true,
+   "degraded": false,
+   "description": "Happy energetic pop where energy matters much more than genre (priority override)",
+   "error_code": null,
+   "flags": [],
+   "id": "S20",
+   "input_type": "structured",
+   "ok": true,
+   "passed": true,
+   "precision_at_5": 1.0,
+   "problems": [],
+   "top1": "Sunrise City",
+   "top5_ids": [
+    1,
+    20,
+    10,
+    32,
+    47
+   ]
+  },
+  {
+   "category": "normal",
+   "consistent": true,
+   "degraded": false,
+   "description": "Free text: late-night study, nothing sleepy",
+   "error_code": null,
+   "flags": [],
+   "id": "T01",
+   "input_type": "text",
+   "ok": true,
+   "passed": true,
+   "precision_at_5": 0.8,
+   "problems": [],
+   "top1": "Focus Flow",
+   "top5_ids": [
+    9,
+    25,
+    4,
+    41,
+    8
+   ]
+  },
+  {
+   "category": "normal",
+   "consistent": true,
+   "degraded": false,
+   "description": "Free text: gym workout with electronic music",
+   "error_code": null,
+   "flags": [],
+   "id": "T02",
+   "input_type": "text",
+   "ok": true,
+   "passed": true,
+   "precision_at_5": 0.8,
+   "problems": [],
+   "top1": "Basement Frequency",
+   "top5_ids": [
+    43,
+    42,
+    5,
+    3,
+    37
+   ]
+  },
+  {
+   "category": "normal",
+   "consistent": true,
+   "degraded": false,
+   "description": "Free text: sad rainy day, acoustic",
+   "error_code": null,
+   "flags": [],
+   "id": "T03",
+   "input_type": "text",
+   "ok": true,
+   "passed": true,
+   "precision_at_5": 0.8,
+   "problems": [],
+   "top1": "Autumn Letters",
+   "top5_ids": [
+    18,
+    39,
+    19,
+    34,
+    21
+   ]
+  },
+  {
+   "category": "normal",
+   "consistent": true,
+   "degraded": false,
+   "description": "Free text: upbeat dance party",
+   "error_code": null,
+   "flags": [
+    "LOW_MARGIN"
+   ],
+   "id": "T04",
+   "input_type": "text",
+   "ok": true,
+   "passed": true,
+   "precision_at_5": 0.8,
+   "problems": [],
+   "top1": "Voltage Garden",
+   "top5_ids": [
+    42,
+    32,
+    16,
+    1,
+    28
+   ]
+  },
+  {
+   "category": "invalid",
+   "consistent": true,
+   "degraded": false,
+   "description": "Invalid: empty profile",
+   "error_code": "EMPTY_PROFILE",
+   "flags": [],
+   "id": "I01",
+   "input_type": "structured",
+   "ok": false,
+   "passed": true,
+   "problems": [],
+   "top1": null,
+   "top5_ids": []
+  },
+  {
+   "category": "invalid",
+   "consistent": true,
+   "degraded": false,
+   "description": "Invalid: whitespace-only text",
+   "error_code": "EMPTY_TEXT",
+   "flags": [],
+   "id": "I02",
+   "input_type": "text",
+   "ok": false,
+   "passed": true,
+   "problems": [],
+   "top1": null,
+   "top5_ids": []
+  },
+  {
+   "category": "invalid",
+   "consistent": true,
+   "degraded": false,
+   "description": "Invalid: energy 1.7 is out of range",
+   "error_code": "ENERGY_OUT_OF_RANGE",
+   "flags": [],
+   "id": "I03",
+   "input_type": "structured",
+   "ok": false,
+   "passed": true,
+   "problems": [],
+   "top1": null,
+   "top5_ids": []
+  },
+  {
+   "category": "invalid",
+   "consistent": true,
+   "degraded": false,
+   "description": "Invalid: negative tempo",
+   "error_code": "TEMPO_OUT_OF_RANGE",
+   "flags": [],
+   "id": "I04",
+   "input_type": "structured",
+   "ok": false,
+   "passed": true,
+   "problems": [],
+   "top1": null,
+   "top5_ids": []
+  },
+  {
+   "category": "invalid",
+   "consistent": true,
+   "degraded": false,
+   "description": "Invalid: 600-character text",
+   "error_code": "TEXT_TOO_LONG",
+   "flags": [],
+   "id": "I05",
+   "input_type": "text",
+   "ok": false,
+   "passed": true,
+   "problems": [],
+   "top1": null,
+   "top5_ids": []
+  },
+  {
+   "category": "invalid",
+   "consistent": true,
+   "degraded": false,
+   "description": "Gibberish text with no musical content",
+   "error_code": "EMPTY_PROFILE",
+   "flags": [],
+   "id": "I06",
+   "input_type": "text",
+   "ok": false,
+   "passed": true,
+   "problems": [],
+   "top1": null,
+   "top5_ids": []
+  },
+  {
+   "category": "injection",
+   "consistent": true,
+   "degraded": false,
+   "description": "Prompt injection: ignore instructions and zero all weights",
+   "error_code": "EMPTY_PROFILE",
+   "flags": [],
+   "id": "J01",
+   "input_type": "text",
+   "ok": false,
+   "passed": true,
+   "problems": [],
+   "top1": null,
+   "top5_ids": []
+  },
+  {
+   "category": "injection",
+   "consistent": true,
+   "degraded": false,
+   "description": "Prompt injection: code-like genre value",
+   "error_code": "EMPTY_PROFILE",
+   "flags": [],
+   "id": "J02",
+   "input_type": "text",
+   "ok": false,
+   "passed": true,
+   "problems": [],
+   "top1": null,
+   "top5_ids": []
+  },
+  {
+   "category": "injection",
+   "consistent": true,
+   "degraded": false,
+   "description": "Prompt injection mixed with a real request for rock",
+   "error_code": null,
+   "flags": [],
+   "id": "J03",
+   "input_type": "text",
+   "ok": true,
+   "passed": true,
+   "precision_at_5": 0.8,
+   "problems": [],
+   "top1": "Storm Runner",
+   "top5_ids": [
+    3,
+    22,
+    13,
+    36,
+    19
+   ]
+  }
+ ]
+}
