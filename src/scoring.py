@@ -21,7 +21,7 @@ Neighbors = Dict[str, Dict[str, float]]  # profile genre -> {related genre: weig
 class ProfileV2:
     genres: List[str] = field(default_factory=list)
     moods: List[str] = field(default_factory=list)
-    energy: float = 0.5
+    energy: Optional[float] = None
     likes_acoustic: Optional[bool] = None
     valence: Optional[float] = None
     danceability: Optional[float] = None

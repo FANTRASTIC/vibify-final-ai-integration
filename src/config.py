@@ -73,6 +73,7 @@ class Config:
 
     # --- revise loop ---
     max_revisions: int = 2
+    neighbor_min_default: float = 0.40   # weaker related genres only count after a NO_GENRE_SUPPORT revision
     energy_boost: float = 1.0
     energy_weight_cap: float = 4.0
     widen_min_neighbor: float = 0.2
