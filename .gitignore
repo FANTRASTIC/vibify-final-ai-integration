@@ -13,3 +13,9 @@ venv/
 
 # Pytest cache
 .pytest_cache/
+
+# Secrets and runtime data
+.env
+logs/*
+!logs/.gitkeep
+data/feedback.jsonl

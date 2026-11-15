@@ -1,3 +1,4 @@
-pandas
 pytest
 streamlit
+# Optional: only needed when VIBIFY_LLM=anthropic (imported lazily, never required)
+# anthropic

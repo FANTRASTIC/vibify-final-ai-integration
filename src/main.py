@@ -50,7 +50,7 @@ def main() -> None:
     experiment = "--experiment" in sys.argv
     weights = EXPERIMENT_WEIGHTS if experiment else None
 
-    songs = load_songs("data/songs.csv")
+    songs = load_songs("data/songs_v1.csv")
     print(f"Loaded songs: {len(songs)}")
     print(f"Weights: {weights or DEFAULT_WEIGHTS} (max score {max_score(weights):.2f})\n")
 

@@ -133,7 +133,11 @@ def score_song(user_prefs: Dict, song: Dict, weights: Optional[Dict[str, float]]
 
 
 def recommend_songs(user_prefs: Dict, songs: List[Dict], k: int = 5, weights: Optional[Dict[str, float]] = None) -> List[Tuple[Dict, float, str]]:
-    """Score every song, sort best-first, and return the top k as (song, score, explanation)."""
+    """Score every song, sort best-first, and return the top k as (song, score, explanation).
+
+    Tie-break rule: sorted(..., reverse=True) is stable, so equal scores keep catalog order.
+    This equals the v2 sort key (-score, id) whenever catalog order is id order.
+    """
     scored = []
     for song in songs:
         score, reasons = score_song(user_prefs, song, weights)
