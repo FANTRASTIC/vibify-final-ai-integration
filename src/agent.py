@@ -176,6 +176,22 @@ class RevisionAgent:
                                           "trace": trace})
         return outcome
 
+    def baseline(self, profile: ProfileV2, unresolved_genres: List[str], k: int = 5,
+                 base_weights: Optional[Dict[str, float]] = None) -> AgentOutcome:
+        """Ablation path used when the evaluator is disabled: score and re-rank once, no checks."""
+        from src.evaluator import DISCLAIMER
+        cfg = self.config
+        state = _State(profile=copy.deepcopy(profile),
+                       weights=effective_weights(profile, base_weights or cfg.weights_v2),
+                       neighbor_floor=cfg.neighbor_min_default, unresolved=list(unresolved_genres))
+        ranked = rank_v2(state.profile, self.songs, self._neighbors(state), None, state.weights, cfg)
+        items, _ = diversify(ranked, k, len(self.songs), cfg)
+        report = EvaluationReport(flags=[], passed=True, metrics={},
+                                  confidence={"catalog_support": None, "label": "unavailable",
+                                              "disclaimer": DISCLAIMER})
+        return AgentOutcome(items=items, report=report, trace=[], notes=[], degraded=False,
+                            weights=state.weights, profile=state.profile)
+
     @staticmethod
     def _open_flags(report: EvaluationReport) -> int:
         return sum(1 for f in report.flags if f.code in LOOP_FLAGS and f.severity != "info")

@@ -197,3 +197,26 @@ class KnowledgeBase:
         scores = self._catalog_index.scores(query)
         order = sorted(range(len(scores)), key=lambda i: (-scores[i], self._catalog[i]["id"]))
         return [self._catalog[i] for i in order[:k] if scores[i] > 0]
+
+
+def resolve_profile_genres(genres: List[str], kb: "KnowledgeBase"):
+    """Map requested genre names to canonical catalog genres via the retriever.
+
+    Returns (resolved, unresolved, notes, sources). Unresolved names are kept out of `resolved`
+    (never force a match); `sources` lists knowledge files used for alias/semantic matches.
+    """
+    resolved: List[str] = []
+    unresolved: List[str] = []
+    notes: List[str] = []
+    sources: List[str] = []
+    for g in genres:
+        r = kb.resolve_genre(g)
+        if r.canonical is None:
+            unresolved.append(g)
+            continue
+        if r.canonical not in resolved:
+            resolved.append(r.canonical)
+        if r.method != "exact":
+            notes.append(f"Interpreted genre '{g}' as '{r.canonical}' ({r.method} match).")
+            sources.append(kb.genres[r.canonical]["file"])
+    return resolved, unresolved, notes, sources

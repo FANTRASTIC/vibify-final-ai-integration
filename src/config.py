@@ -71,6 +71,9 @@ class Config:
     conf_strong: float = 0.75
     conf_moderate: float = 0.5
 
+    # --- reliability evaluator switch (False only for ablation tests/experiments) ---
+    evaluator_enabled: bool = True
+
     # --- revise loop ---
     max_revisions: int = 2
     neighbor_min_default: float = 0.40   # weaker related genres only count after a NO_GENRE_SUPPORT revision
