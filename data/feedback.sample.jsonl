@@ -1,0 +1,3 @@
+{"sample": true, "timestamp": "2000-01-01T00:00:00+00:00", "request_id": "sample-0001", "song_id": 1, "rating": "up", "profile_summary": {"genres": ["pop"], "moods": ["happy"], "energy": 0.8}}
+{"sample": true, "timestamp": "2000-01-01T00:01:00+00:00", "request_id": "sample-0001", "song_id": 5, "rating": "down", "profile_summary": {"genres": ["pop"], "moods": ["happy"], "energy": 0.8}}
+{"sample": true, "timestamp": "2000-01-01T00:02:00+00:00", "request_id": "sample-0002", "song_id": 2, "rating": "up", "profile_summary": {"genres": ["lofi"], "moods": ["chill"], "energy": 0.4}}
