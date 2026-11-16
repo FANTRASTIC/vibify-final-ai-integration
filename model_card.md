@@ -72,7 +72,7 @@ A feature with no target is skipped and its weight leaves the maximum, so `fract
 
 ## Testing and Evaluation Results
 
-All numbers are from `python -m pytest -q` (198 of 198 passed) and `python scripts/evaluate.py` (exit code 0; 33 scenarios, 3 runs each, mock LLM). Raw output: `results/eval_results.json`, `results/eval_summary.md`. **Precision@5 is computed against DRAFT labels (labeled by the AI assistant from scenario descriptions; the author must review and edit before these numbers are cited as final).**
+All numbers are from `python -m pytest -q` (200 of 200 passed) and `python scripts/evaluate.py` (exit code 0; 33 scenarios, 3 runs each, mock LLM). Raw output: `results/eval_results.json`, `results/eval_summary.md`. **Precision@5 is computed against DRAFT labels (labeled by the AI assistant from scenario descriptions; the author must review and edit before these numbers are cited as final).**
 
 | Metric | v1 baseline | v2, same 17 scenarios | v2, all 25 ok scenarios | v2, evaluator disabled |
 |---|---|---|---|---|

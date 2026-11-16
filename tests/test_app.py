@@ -39,16 +39,30 @@ def test_v1_view_returns_five_songs():
     assert len(app.v1_view({"genres": ["pop"], "moods": ["happy"], "energy": 0.8}, songs)) == 5
 
 
+def test_cover_art_is_deterministic_and_distinct(songs):
+    assert app.cover_svg(songs[0]) == app.cover_svg(songs[0])
+    assert app.cover_svg(songs[0]) != app.cover_svg(songs[10])
+    assert app.cover_svg(songs[0]).startswith("<svg")
+
+
+def test_song_card_escapes_html(songs):
+    from src.pipeline import ResultItem
+    item = ResultItem(dict(songs[0], title="<script>x</script>"), 1, {"fraction": 0.8}, "why <b>", "llm")
+    out = app.song_card_html(item)
+    assert "<script>" not in out and "&lt;script&gt;" in out and "why &lt;b&gt;" in out
+
+
 def test_streamlit_app_renders_headless():
     """Run the real script with Streamlit's AppTest (no browser) and assert it renders without exceptions."""
     testing = pytest.importorskip("streamlit.testing.v1")
     at = testing.AppTest.from_file(str(Path(app.__file__)), default_timeout=60).run()
     assert not at.exception
-    assert at.title[0].value == "Vibify 2.0"
+    assert "Vibify 2.0" in at.markdown[0].value or any("Vibify 2.0" in m.value for m in at.markdown)
+    assert len(at.button) >= 4  # quick-start presets
     at.sidebar.multiselect[0].set_value(["lofi"])
     at.sidebar.button[0].click().run()
     assert not at.exception
-    assert len(at.dataframe) >= 1
+    assert any("Your recommendations" in m.value for m in at.markdown)
     at.sidebar.text_area[0].set_value("upbeat dance party")
     at.sidebar.button[1].click().run()
-    assert not at.exception and len(at.dataframe) >= 1
+    assert not at.exception and any('class="card"' in m.value for m in at.markdown)

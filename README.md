@@ -88,7 +88,7 @@ Python 3.10+ (built and tested on 3.14). Only `pytest` and `streamlit` are requi
    ```
 6. Run the tests: `python -m pytest -q`
 7. Run the evaluation harness (exits 0 only if every scenario assertion passes): `python scripts/evaluate.py`
-8. Run the app: `streamlit run src/app.py`
+8. Run the app: `streamlit run src/app.py` (dark gradient theme, generated cover art, one-click quick-start presets, fit meters and flag callouts; the theme lives in `.streamlit/config.toml`)
 
 Steps 2, 3, 5, 6 and 7 were executed as written in this build in a fresh `.venv` on Windows (`pip install -r requirements.txt` exited 0; the CLI modes, pytest and the harness were run with the `.venv` interpreter). For step 8 the server was launched headless and answered its health check, and the UI was exercised with Streamlit's `AppTest`; it was not clicked through in a browser.
 
@@ -157,7 +157,7 @@ The first pass flagged `NO_GENRE_SUPPORT` and `UNRESOLVED_GENRE`; one revision d
 
 ## Testing Summary
 
-**pytest: 198 of 198 tests passed** (`python -m pytest -q`, in the fresh `.venv`). Breakdown by file: recommender (original) 2, v1 functions 11, v1 regression snapshot 13, catalog 18, scoring 11, retriever 14, guardrails 36, rerank 7, evaluator 18, agent 7, parser/injection 14, explainer 12, pipeline 23, harness 3, app 6, logging 3. The two original tests were not modified.
+**pytest: 200 of 200 tests passed** (`python -m pytest -q`, in the fresh `.venv`). Breakdown by file: recommender (original) 2, v1 functions 11, v1 regression snapshot 13, catalog 18, scoring 11, retriever 14, guardrails 36, rerank 7, evaluator 18, agent 7, parser/injection 14, explainer 12, pipeline 23, harness 3, app 8, logging 3. The two original tests were not modified.
 
 **Evaluation harness** (`python scripts/evaluate.py`, exit code 0, 33 scenarios, 3 runs each, mock LLM). Full output: [results/eval_summary.md](results/eval_summary.md), [results/eval_results.json](results/eval_results.json). The numbers below come from that run.
 
@@ -237,7 +237,7 @@ scripts/evaluate.py     evaluation harness
 src/                    config, catalog, scoring, rerank, retriever, guardrails, evaluator, agent,
                         llm, parser, explainer, pipeline, logging_setup, app (Streamlit),
                         recommender (v1, unchanged API), main (CLI)
-tests/                  16 test files, 198 tests
+tests/                  16 test files, 200 tests
 ```
 
 ## Vibify 1.0 history
